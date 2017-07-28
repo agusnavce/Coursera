@@ -86,6 +86,10 @@ Theta2_grad = zeros(size(Theta2));
 %         Hint: We recommend implementing backpropagation using a for-loop
 %               over the training examples if you are implementing it for the 
 %               first time.
+
+
+
+        
 %
 % Part 3: Implement regularization with the cost function and gradients.
 %
