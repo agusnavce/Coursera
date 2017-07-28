@@ -42,15 +42,15 @@ Theta2_grad = zeros(size(Theta2));
             %Forward Propagation
             X = [ones(m,1) X];
 
-            z = X*Theta1';
+            z2 = X*Theta1';
 
-            a2 = sigmoid(z);
+            a2 = sigmoid(z2);
 
             a2 = [ones(m,1) a2];
 
-            z =  a2*Theta2';
+            z3 =  a2*Theta2';
 
-            a3 = sigmoid(z);
+            a3 = sigmoid(z3);
 
             % One Hot Encoding for the Y vector
 
@@ -87,9 +87,24 @@ Theta2_grad = zeros(size(Theta2));
 %               over the training examples if you are implementing it for the 
 %               first time.
 
+        tridelta_1=0;
+        tridelta_2=0;
 
-
+        delta_3 = a3-y;
         
+        z2 = [ones(m,1) z2];
+         
+	    delta_2 = delta_3*Theta2.*sigmoidGradient(z2);
+        
+        delta_2 = delta_2(:,2:end);
+
+        tridelta_1 = tridelta_1+delta_2'*X; 
+        
+        tridelta_2 = tridelta_2+delta_3'*a2; 
+        
+        Theta1_grad = (1/m).*tridelta_1;
+        
+        Theta2_grad = (1/m).*tridelta_2;
 %
 % Part 3: Implement regularization with the cost function and gradients.
 %
