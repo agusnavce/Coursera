@@ -115,7 +115,8 @@ Theta2_grad = zeros(size(Theta2));
 %
 
 
-
+        Theta1_grad(:,2:end) = Theta1_grad(:,2:end) + (lambda/m)*(Theta1(:,2:end));
+        Theta2_grad(:,2:end) = Theta2_grad(:,2:end) + (lambda/m)*(Theta2(:,2:end));
 
 
 
