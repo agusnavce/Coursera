@@ -2,7 +2,7 @@ function idx = findClosestCentroids(X, centroids)
 %FINDCLOSESTCENTROIDS computes the centroid memberships for every example
 %   idx = FINDCLOSESTCENTROIDS (X, centroids) returns the closest centroids
 %   in idx for a dataset X where each row is a single example. idx = m x 1 
-%   vector of centroid assignments (i.e. each entry in range [1..K])
+%   vector of centroid assignments (i.e. each entry in range [1..K  ])
 %
 
 % Set K
@@ -21,9 +21,16 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
-
-
-
+        for i = 1:length(X)
+            closest = intmax();
+            for j= 1:K
+                distance = sqrt(sum(power((X(i,:)-centroids(j,:)),2)));;
+                if distance < closest
+                    closest = distance;
+                    idx(i) = j;
+                endif
+            endfor        
+         endfor           
 
 
 
